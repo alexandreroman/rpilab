@@ -1,0 +1,55 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel
+spec:
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.90.1
+  envFrom:
+  - secretRef:
+      name: otel
+  mode: sidecar
+  config: |
+    extensions:
+      basicauth/traces:
+        client_auth:
+          username: "${TRACES_USER_ID}"
+          password: "${API_KEY}"
+      basicauth/metrics:
+        client_auth:
+          username: "${METRICS_USER_ID}"
+          password: "${API_KEY}"
+
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+
+    exporters:
+      debug:
+
+      otlp:
+        endpoint: ${TRACES_URL}
+        tls:
+          insecure: false
+        auth:
+          authenticator: basicauth/traces
+
+      prometheusremotewrite:
+        endpoint: ${METRICS_URL}
+        auth:
+          authenticator: basicauth/metrics
+
+    processors:
+
+    service:
+      extensions: [ basicauth/traces, basicauth/metrics ]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp, debug]
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [prometheusremotewrite, debug]
