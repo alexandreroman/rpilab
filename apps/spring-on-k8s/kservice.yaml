@@ -1,0 +1,25 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: springpi
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
+        autoscaling.knative.dev/window: "60s"
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/spring-on-k8s:linux-arm64
+        imagePullPolicy: Always
+        env:
+        - name: SPRING_CONFIG_IMPORT
+          value: configtree:/etc/config/
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config
+      volumes:
+      - name: config
+        configMap:
+          name: config

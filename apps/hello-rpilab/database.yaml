@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-rpilab-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hello-rpilab
+      app.kubernetes.io/instance: hello-rpilab-db
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hello-rpilab
+        app.kubernetes.io/instance: hello-rpilab-db
+    spec:
+      containers:
+      - name: redis
+        image: redis:7
+        args: ["--requirepass", "$(REDIS_PASS)"]
+        ports:
+        - name: redis
+          containerPort: 6379
+        env:
+        - name: MASTER
+          value: "true"
+        - name: REDIS_PASS
+          valueFrom:
+            secretKeyRef:
+              name: redis-password
+              key: REDIS_PASS
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-rpilab-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: redis
+    port: 6379
+    protocol: TCP
+    targetPort: redis
+  selector:
+    app.kubernetes.io/name: hello-rpilab
+    app.kubernetes.io/instance: hello-rpilab-db
+---
+apiVersion: secretgen.k14s.io/v1alpha1
+kind: Password
+metadata:
+  name: redis-password
+spec:
+  secretTemplate:
+    type: Opaque
+    stringData:
+      REDIS_PASS: $(value)
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretTemplate
+metadata:
+  name: hello-rpilab-db
+spec:
+  inputResources:
+  - name: redis-password
+    ref:
+      apiVersion: v1
+      kind: Secret
+      name: redis-password
+  template:
+    type: Opaque
+    data:
+      password: $(.redis-password.data.REDIS_PASS)
+    stringData:
+      provider: gitops
+      type: redis
+      host: hello-rpilab-db
+      port: "6379"

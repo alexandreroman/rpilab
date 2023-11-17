@@ -1,0 +1,9 @@
+- path: /spec/template/spec/containers/0/startupProbe
+  op: remove
+
+- path: /spec/template/spec/containers/0/resources
+  op: remove
+
+- path: /metadata/name
+  op: replace
+  value: hello

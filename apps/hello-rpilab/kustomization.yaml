@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: hello-rpilab
+resources:
+- namespace.yaml
+- otel.yaml
+- otel-sealed-secret.yaml
+- database.yaml
+- app-sealed-secret.yaml
+- service-binding.yaml
+- https://raw.githubusercontent.com/alexandreroman/rpilab-tap/main/config/stable/hello-rpilab/delivery.yml
+patches:
+- path: patch-kservice.yaml
+  target:
+    kind: Service
+    name: hello-rpilab
+images:
+- name: tdkhub.azurecr.io/tanzu-application-platform/workloads/hello-rpilab-stable
+  newName: ghcr.io/alexandreroman/hello-rpilab
+  digest: sha256:9a5d4e47edb6f04b7b5d7acb53513de2b53ef1b1d72b58cb3705d3fb47ad6164

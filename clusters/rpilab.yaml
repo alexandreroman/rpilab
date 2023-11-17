@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rpilab-system
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: rpilab
+  namespace: rpilab-system
+spec:
+  interval: 10m
+  url: https://github.com/alexandreroman/rpilab
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: rpilab-addons
+  namespace: rpilab-system
+spec:
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    name: rpilab
+  path: addons
+  prune: true
+  timeout: 1m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: rpilab-apps
+  namespace: rpilab-system
+spec:
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    name: rpilab
+  path: apps
+  prune: true
+  timeout: 1m
