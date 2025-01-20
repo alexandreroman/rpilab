@@ -1,0 +1,57 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello
+  labels: &labels
+    app.kubernetes.io/part-of: hello-rpilab
+    app.kubernetes.io/name: hello-rpilab
+    app.kubernetes.io/instance: hello-rpilab
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
+        autoscaling.knative.dev/window: "120s"
+        sidecar.opentelemetry.io/inject: "true"
+      labels: *labels
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/hello-rpilab@sha256:a75ecccd216d418e68d902dbda204d90aeb94137071c6fe40e5aa33c3e925205
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128M
+          limits:
+            cpu: 500m
+            memory: 128M
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+        - name: SPRING_CONFIG_IMPORT
+          value: configtree:/etc/config/
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config
+      volumes:
+      - name: config
+        secret:
+          secretName: hello-rpilab-config

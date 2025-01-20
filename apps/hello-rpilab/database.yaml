@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-rpilab-db
+  labels: &labels
+    app.kubernetes.io/part-of: hello-rpilab
+    app.kubernetes.io/name: hello-rpilab
+    app.kubernetes.io/instance: hello-rpilab-db
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app.kubernetes.io/name: hello-rpilab
-      app.kubernetes.io/instance: hello-rpilab-db
+    matchLabels: *labels
   template:
     metadata:
-      labels:
-        app.kubernetes.io/name: hello-rpilab
-        app.kubernetes.io/instance: hello-rpilab-db
+      labels: *labels
     spec:
       containers:
       - name: redis

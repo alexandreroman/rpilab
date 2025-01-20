@@ -8,13 +8,4 @@ resources:
 - database.yaml
 - app-sealed-secret.yaml
 - service-binding.yaml
-- https://raw.githubusercontent.com/alexandreroman/rpilab-tap/main/config/stable/hello-rpilab/delivery.yml
-patches:
-- path: patch-kservice.yaml
-  target:
-    kind: Service
-    name: hello-rpilab
-images:
-- name: tdkhub.azurecr.io/tanzu-application-platform/workloads/hello-rpilab-stable
-  newName: ghcr.io/alexandreroman/hello-rpilab
-  digest: sha256:eb52a80779692b3bc05a062f16daed9563f446b46102f7a2b76ff2e2b6c59fb2
+- kservice.yaml
