@@ -11,8 +11,15 @@ spec:
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
-      - image: ghcr.io/alexandreroman/spring-on-k8s@sha256:172455d6d3d1b9e3e66efeb348b80d50119640400565effa2b699b4579102bee
-        imagePullPolicy: Always
+      - image: ghcr.io/alexandreroman/spring-on-k8s@sha256:5ffd490cf779c8f228a6894388dc39c7417b8c07a797edc442c2eccea32cffbe
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64M
+          limits:
+            cpu: 500m
+            memory: 64M
         env:
         - name: SPRING_CONFIG_IMPORT
           value: configtree:/etc/config/
