@@ -17,7 +17,7 @@ spec:
       labels: *labels
     spec:
       containers:
-      - image: ghcr.io/alexandreroman/hello-rpilab@sha256:7f62dc17a6f30453c089888563e96182549e136b1794256372fc1beb70d3a0eb
+      - image: ghcr.io/alexandreroman/hello-rpilab@sha256:83f4e1a0245f01a0a92323cf0a8ede9fbde586c2900c0f965b789a8ec1b2c429
         imagePullPolicy: IfNotPresent
         resources:
           requests:
