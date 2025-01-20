@@ -1,77 +1,36 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
-  name: hello-rpilab-db
-  labels: &labels
-    app.kubernetes.io/part-of: hello-rpilab
-    app.kubernetes.io/name: hello-rpilab
-    app.kubernetes.io/instance: hello-rpilab-db
+  name: bitnami-redis
 spec:
-  replicas: 1
-  selector:
-    matchLabels: *labels
-  template:
-    metadata:
-      labels: *labels
-    spec:
-      containers:
-      - name: redis
-        image: redis:7
-        args: ["--requirepass", "$(REDIS_PASS)"]
-        ports:
-        - name: redis
-          containerPort: 6379
-        env:
-        - name: MASTER
-          value: "true"
-        - name: REDIS_PASS
-          valueFrom:
-            secretKeyRef:
-              name: redis-password
-              key: REDIS_PASS
+  interval: 30m
+  url: oci://registry-1.docker.io/bitnamicharts/redis
+  ref:
+    tag: "20.6.3"
 ---
-apiVersion: v1
-kind: Service
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
 metadata:
   name: hello-rpilab-db
 spec:
-  type: ClusterIP
-  ports:
-  - name: redis
-    port: 6379
-    protocol: TCP
-    targetPort: redis
-  selector:
-    app.kubernetes.io/name: hello-rpilab
-    app.kubernetes.io/instance: hello-rpilab-db
+  chartRef:
+    kind: OCIRepository
+    name: bitnami-redis
+  interval: 30m
+  values:
+    architecture: standalone
+    auth:
+      password: changeme
+      existingSecret: hello-rpilab-db-password
+    serviceBindings:
+      enabled: true
 ---
 apiVersion: secretgen.k14s.io/v1alpha1
 kind: Password
 metadata:
-  name: redis-password
+  name: hello-rpilab-db-password
 spec:
   secretTemplate:
     type: Opaque
     stringData:
-      REDIS_PASS: $(value)
----
-apiVersion: secretgen.carvel.dev/v1alpha1
-kind: SecretTemplate
-metadata:
-  name: hello-rpilab-db
-spec:
-  inputResources:
-  - name: redis-password
-    ref:
-      apiVersion: v1
-      kind: Secret
-      name: redis-password
-  template:
-    type: Opaque
-    data:
-      password: $(.redis-password.data.REDIS_PASS)
-    stringData:
-      provider: gitops
-      type: redis
-      host: hello-rpilab-db
-      port: "6379"
+      password: $(value)
