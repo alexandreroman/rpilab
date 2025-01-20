@@ -11,7 +11,7 @@ spec:
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
-      - image: ghcr.io/alexandreroman/spring-on-k8s@sha256:ec5ff9c7ca735e2f32010ed33a757cfef62fdff6cd7ce527a816668c238d7574
+      - image: ghcr.io/alexandreroman/spring-on-k8s@sha256:2ea1acc3117412c1969dbc9d4cb8e1383eb25810efd490efc23c5e673068e992
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -20,6 +20,25 @@ spec:
           limits:
             cpu: 500m
             memory: 64M
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
         env:
         - name: SPRING_CONFIG_IMPORT
           value: configtree:/etc/config/
