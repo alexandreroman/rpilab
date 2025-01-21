@@ -11,4 +11,4 @@ resources:
 - kservice.yaml
 images:
 - name: ghcr.io/alexandreroman/hello-rpilab
-  digest: sha256:16e885fce3176504d585a468d5f3f14d4a3333347d3969f7e85ce06578dcf2e2
+  digest: sha256:6a4f2e83416ac96d65d66ef69503836d184eb19487eed3f02d3e607de87f33d2
