@@ -1,0 +1,38 @@
+name: Run GitOps process
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  run-gitops-process:
+    runs-on: ubuntu-24.04
+    env:
+      IMAGES: "ghcr.io/alexandreroman/hello-rpilab ghcr.io/alexandreroman/spring-on-k8s"
+    steps:
+    - uses: imranismail/setup-kustomize@v2
+    - uses: carvel-dev/setup-action@v2
+      with:
+        only: imgpkg
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Update images
+      run: |
+        cd apps
+        for IMG in $IMAGES; do
+          kustomize edit set image `imgpkg tag resolve -i $IMG`
+        done
+        cat kustomization.yaml
+    - name: Commit configuration
+      run: |
+        if [[ `git status --porcelain` ]]; then
+          git config --global user.name 'github-actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am "Bump apps"
+          git push
+        fi

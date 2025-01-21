@@ -10,6 +10,3 @@ configMapGenerator:
 - name: config
   literals:
   - app.message=Hello Raspberry Pi!
-images:
-- name: ghcr.io/alexandreroman/spring-on-k8s
-  digest: sha256:2ea1acc3117412c1969dbc9d4cb8e1383eb25810efd490efc23c5e673068e992

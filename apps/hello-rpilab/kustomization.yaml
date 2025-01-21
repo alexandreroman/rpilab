@@ -9,6 +9,3 @@ resources:
 - app-sealed-secret.yaml
 - service-binding.yaml
 - kservice.yaml
-images:
-- name: ghcr.io/alexandreroman/hello-rpilab
-  digest: sha256:106a000593e87909962e825afafb8647dfb516bcda6de8803faa71063b6c76e6
