@@ -11,7 +11,7 @@ spec:
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
-      - image: ghcr.io/alexandreroman/spring-on-k8s@sha256:2ea1acc3117412c1969dbc9d4cb8e1383eb25810efd490efc23c5e673068e992
+      - image: ghcr.io/alexandreroman/spring-on-k8s
         imagePullPolicy: IfNotPresent
         resources:
           requests:
