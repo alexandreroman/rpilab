@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - spring-on-k8s
 - hello-rpilab
+- blink1-server
 images:
 - digest: sha256:26126f980df006502833fb926e5dc6ab697f2327ba2dbe7bae495c6259c5ee94
   name: ghcr.io/alexandreroman/hello-rpilab

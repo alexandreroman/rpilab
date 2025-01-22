@@ -11,7 +11,7 @@ jobs:
   run-gitops-process:
     runs-on: ubuntu-24.04
     env:
-      IMAGES: "ghcr.io/alexandreroman/hello-rpilab ghcr.io/alexandreroman/spring-on-k8s"
+      IMAGES: "ghcr.io/alexandreroman/hello-rpilab ghcr.io/alexandreroman/spring-on-k8s ghcr.io/alexandreroman/blink1-server"
     steps:
     - uses: imranismail/setup-kustomize@v2
     - uses: carvel-dev/setup-action@v2

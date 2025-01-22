@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blink1-server
+  labels: &labels
+    app.kubernetes.io/part-of: blink1-server
+    app.kubernetes.io/name: blink1-server
+    app.kubernetes.io/instance: blink1-server
+spec:
+  selector: *labels
+  ports:
+  - port: 8080
+    targetPort: 8080
