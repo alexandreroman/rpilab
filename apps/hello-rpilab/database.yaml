@@ -20,7 +20,6 @@ spec:
   values:
     architecture: standalone
     auth:
-      password: changeme
       existingSecret: hello-rpilab-db-password
     serviceBindings:
       enabled: true
