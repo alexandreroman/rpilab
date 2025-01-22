@@ -9,7 +9,7 @@ metadata:
   name: rpilab
   namespace: rpilab-system
 spec:
-  interval: 10m
+  interval: 5m
   url: https://github.com/alexandreroman/rpilab
   ref:
     branch: main
@@ -20,13 +20,13 @@ metadata:
   name: rpilab-addons
   namespace: rpilab-system
 spec:
-  interval: 5m
+  interval: 3m
   sourceRef:
     kind: GitRepository
     name: rpilab
   path: addons
   prune: true
-  timeout: 1m
+  timeout: 10m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -34,10 +34,10 @@ metadata:
   name: rpilab-apps
   namespace: rpilab-system
 spec:
-  interval: 5m
+  interval: 3m
   sourceRef:
     kind: GitRepository
     name: rpilab
   path: apps
   prune: true
-  timeout: 1m
+  timeout: 10m
