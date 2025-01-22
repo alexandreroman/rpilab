@@ -11,3 +11,7 @@ reconcile:
 	flux --context ${K8S_CONTEXT} reconcile source git -n rpilab-system rpilab && \
 	flux --context ${K8S_CONTEXT} reconcile kustomization -n rpilab-system rpilab-addons && \
 	flux --context ${K8S_CONTEXT} reconcile kustomization -n rpilab-system rpilab-apps
+
+install:
+	kapp deploy -a fluxcd -f https://github.com/fluxcd/flux2/releases/download/v2.4.0/install.yaml
+	kapp deploy -a rpilab -f clusters/rpilab.yaml
