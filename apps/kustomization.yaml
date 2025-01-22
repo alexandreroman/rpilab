@@ -3,3 +3,8 @@ kind: Kustomization
 resources:
 - spring-on-k8s
 - hello-rpilab
+images:
+- digest: sha256:26126f980df006502833fb926e5dc6ab697f2327ba2dbe7bae495c6259c5ee94
+  name: ghcr.io/alexandreroman/hello-rpilab
+- digest: sha256:d6b693eb4f8c7ca55e2cea3c1017af650eabd7a0812e155f884fee5cd58af720
+  name: ghcr.io/alexandreroman/spring-on-k8s
