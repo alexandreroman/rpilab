@@ -5,7 +5,7 @@ resources:
 - hello-rpilab
 - blink1-server
 images:
-- digest: sha256:fc0119dd2384604224e97666dd90e3696af8206494d078adccf9d2d128776cff
+- digest: sha256:a26d14491664fc6706004765ddaf42b0b7f8c78ce3342a0ab0b2c844859651cf
   name: ghcr.io/alexandreroman/blink1-server
 - digest: sha256:26126f980df006502833fb926e5dc6ab697f2327ba2dbe7bae495c6259c5ee94
   name: ghcr.io/alexandreroman/hello-rpilab
