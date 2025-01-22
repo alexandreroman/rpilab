@@ -26,12 +26,12 @@ spec:
             cpu: 100m
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /readyz
             port: 8080
             scheme: HTTP
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /livez
             port: 8080
             scheme: HTTP
         securityContext:
