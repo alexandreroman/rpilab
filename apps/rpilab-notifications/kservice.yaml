@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: rpilab-notifications
+  labels: &labels
+    app.kubernetes.io/part-of: rpilab-notifications
+    app.kubernetes.io/name: rpilab-notifications
+    app.kubernetes.io/instance: rpilab-notifications
+    networking.knative.dev/visibility: cluster-local
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/window: "30s"
+      labels: *labels
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/rpilab-notifications
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32M
+          limits:
+            cpu: 100m
+            memory: 32M
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        envFrom:
+        - configMapRef:
+            name: rpilab-notifications

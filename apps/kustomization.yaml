@@ -4,6 +4,7 @@ resources:
 - spring-on-k8s
 - hello-rpilab
 - blink1-server
+- rpilab-notifications
 images:
 - digest: sha256:3c62c217e14e7eeebf5b641b323bc530ed2f1d93fcbf1651ee8968533f4345e3
   name: ghcr.io/alexandreroman/blink1-server

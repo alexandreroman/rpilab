@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: rpilab-notifications
+resources:
+- 0-namespace.yaml
+- kservice.yaml
+- notifications.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+configMapGenerator:
+- name: rpilab-notifications
+  literals:
+  - BLINK1_SERVER_URL=http://blink1-server.blink1-server.svc.cluster.local

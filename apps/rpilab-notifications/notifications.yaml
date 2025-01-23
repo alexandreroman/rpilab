@@ -1,0 +1,20 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: rpilab-notifications
+spec:
+  type: generic
+  address: http://rpilab-notifications.rpilab-notifications.svc.cluster.local/alert
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: rpilab-notifications
+spec:
+  summary: "Monitor GitOps based deployments"
+  providerRef:
+    name: rpilab-notifications
+  eventSources:
+  - kind: Kustomization
+    name: rpilab-apps
+    namespace: rpilab-system
