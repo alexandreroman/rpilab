@@ -47,11 +47,4 @@ spec:
             type: RuntimeDefault
         env:
         - name: SPRING_CONFIG_IMPORT
-          value: configtree:/etc/config/
-        volumeMounts:
-        - mountPath: /etc/config
-          name: config
-      volumes:
-      - name: config
-        secret:
-          secretName: hello-rpilab-config
+          value: optional:configtree:/bindings/config/
