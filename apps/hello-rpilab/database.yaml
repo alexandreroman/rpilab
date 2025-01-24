@@ -21,6 +21,9 @@ spec:
     architecture: standalone
     auth:
       existingSecret: hello-rpilab-db-password
+    master:
+      persistence:
+        enabled: false
     serviceBindings:
       enabled: true
 ---
