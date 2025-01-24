@@ -4,5 +4,6 @@ namespace: bonjour
 resources:
 - namespace.yaml
 - database.yaml
-- service-binding.yaml
+- config.yaml
 - kservice.yaml
+- service-binding.yaml
