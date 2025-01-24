@@ -32,4 +32,4 @@ spec:
   secretTemplate:
     type: Opaque
     stringData:
-      password: $(value)
+      redis-password: $(value)
