@@ -12,5 +12,5 @@ images:
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:736fab50d865bbd660b9e7404159e59412ba75dde57c55f000425e1fc3d4bab2
   name: ghcr.io/alexandreroman/rpilab-notifications
-- digest: sha256:d6b693eb4f8c7ca55e2cea3c1017af650eabd7a0812e155f884fee5cd58af720
+- digest: sha256:c6c61c4d6e74aad0419443e0580d32a415ffe9b2031350c5c068d9d0185ffdc0
   name: ghcr.io/alexandreroman/spring-on-k8s
