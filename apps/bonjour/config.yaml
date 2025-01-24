@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bonjour-config
+type: Opaque
+stringData:
+  provider: gitops
+  type: config
+  app.greetings: Bonjour Kubernetes !
