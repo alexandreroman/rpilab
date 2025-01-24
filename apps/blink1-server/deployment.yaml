@@ -17,6 +17,7 @@ spec:
       containers:
       - name: app
         image: ghcr.io/alexandreroman/blink1-server
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: 32Mi
@@ -36,6 +37,13 @@ spec:
             scheme: HTTP
         securityContext:
           privileged: true
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
         ports:
         - containerPort: 8080
         volumeMounts:
