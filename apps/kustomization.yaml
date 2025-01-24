@@ -5,12 +5,9 @@ resources:
 - hello-rpilab
 - blink1-server
 - rpilab-notifications
-- bonjour
 images:
 - digest: sha256:7249fe57e66727ebc8a684daeb076eaf0dd6c1832366ce955218d1088968b406
   name: ghcr.io/alexandreroman/blink1-server
-- digest: sha256:0ec28ca34bc5b14849d17c62ddffc917a22502500f263bb3436af027597b8b3c
-  name: ghcr.io/alexandreroman/bonjour
 - digest: sha256:1985be56ca0793bf98c829d7743496d236d917c40bc27a4e8060ba79aa7cb006
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:736fab50d865bbd660b9e7404159e59412ba75dde57c55f000425e1fc3d4bab2
