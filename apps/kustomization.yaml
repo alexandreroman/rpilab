@@ -10,7 +10,7 @@ images:
   name: ghcr.io/alexandreroman/blink1-server
 - digest: sha256:f486730616b19b98c36f87464818162dc984ada60b378f6b1f1bddaf626de5b6
   name: ghcr.io/alexandreroman/bonjour
-- digest: sha256:1985be56ca0793bf98c829d7743496d236d917c40bc27a4e8060ba79aa7cb006
+- digest: sha256:75f040ba94326db732e6d83c85723d1075a07483eb171377334c991e72ce393b
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:8e3819d3ce04cb0eaeb1bbb71e81c382d2e491c4d401e9dde00c94773f40800b
   name: ghcr.io/alexandreroman/rpilab-notifications
