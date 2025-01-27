@@ -8,7 +8,7 @@ resources:
 images:
 - digest: sha256:7bf750fb918a09bfe06f4263824ca74257c263d50df21d236062874a3b17ab37
   name: ghcr.io/alexandreroman/blink1-server
-- digest: sha256:f486730616b19b98c36f87464818162dc984ada60b378f6b1f1bddaf626de5b6
+- digest: sha256:6e7606cea62a94c4028a49fe453f18280fc59c27c3c0620fbd07de152a0a9bb6
   name: ghcr.io/alexandreroman/bonjour
 - digest: sha256:75f040ba94326db732e6d83c85723d1075a07483eb171377334c991e72ce393b
   name: ghcr.io/alexandreroman/hello-rpilab
