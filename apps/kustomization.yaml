@@ -6,6 +6,7 @@ resources:
 - blink1-server
 - rpilab-notifications
 - bonjour
+- html-assistant
 images:
 - digest: sha256:7bf750fb918a09bfe06f4263824ca74257c263d50df21d236062874a3b17ab37
   name: ghcr.io/alexandreroman/blink1-server
