@@ -29,16 +29,6 @@ spec:
           runAsUser: 1000
           seccompProfile:
             type: RuntimeDefault
-        readinessProbe:
-          httpGet:
-            path: /readyz
-            port: 8080
-            scheme: HTTP
-        livenessProbe:
-          httpGet:
-            path: /livez
-            port: 8080
-            scheme: HTTP
         env:
         - name: SPRING_CONFIG_IMPORT
           value: configtree:/etc/config/
