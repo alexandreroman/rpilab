@@ -1,0 +1,49 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: rpilab-router
+  labels: &labels
+    app.kubernetes.io/part-of: rpilab-router
+    app.kubernetes.io/name: rpilab-router
+    app.kubernetes.io/instance: rpilab-router
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
+        autoscaling.knative.dev/window: "120s"
+      labels: *labels
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/rpilab-router
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64M
+          limits:
+            cpu: 500m
+            memory: 64M
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+        - name: SPRING_CONFIG_IMPORT
+          value: optional:configtree:/bindings/config/

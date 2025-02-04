@@ -5,6 +5,7 @@ resources:
 - hello-rpilab
 - blink1-server
 - rpilab-notifications
+- rpilab-router
 - bonjour
 - html-assistant
 images:
