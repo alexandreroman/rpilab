@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rpilab-router
+  labels: &labels
+    app.kubernetes.io/part-of: rpilab-router
+    app.kubernetes.io/name: rpilab-router
+    app.kubernetes.io/instance: rpilab-router
+spec:
+  selector: *labels
+  ports:
+  - port: 80
+    targetPort: 8080

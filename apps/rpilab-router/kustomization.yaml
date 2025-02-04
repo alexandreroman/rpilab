@@ -4,5 +4,7 @@ namespace: rpilab-router
 resources:
 - namespace.yaml
 - app-sealed-secret.yaml
-- kservice.yaml
+- deployment.yaml
+- service.yaml
+- ingress.yaml
 - service-binding.yaml

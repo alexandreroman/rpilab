@@ -9,6 +9,6 @@ spec:
     kind: Secret
     name: rpilab-router-config
   workload:
-    apiVersion: serving.knative.dev/v1
-    kind: Service
+    apiVersion: apps/v1
+    kind: Deployment
     name: rpilab-router

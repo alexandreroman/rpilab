@@ -1,5 +1,5 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: rpilab-router
   labels: &labels
@@ -7,17 +7,19 @@ metadata:
     app.kubernetes.io/name: rpilab-router
     app.kubernetes.io/instance: rpilab-router
 spec:
+  selector:
+    matchLabels: *labels
   template:
     metadata:
-      annotations:
-        autoscaling.knative.dev/minScale: "0"
-        autoscaling.knative.dev/maxScale: "3"
-        autoscaling.knative.dev/window: "120s"
       labels: *labels
     spec:
+      replicas: 1
       containers:
-      - image: ghcr.io/alexandreroman/rpilab-router
+      - name: app
+        image: ghcr.io/alexandreroman/rpilab-router
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
         resources:
           requests:
             cpu: 100m
@@ -45,5 +47,7 @@ spec:
           seccompProfile:
             type: RuntimeDefault
         env:
+        - name: PORT
+          value: "8080"
         - name: SPRING_CONFIG_IMPORT
           value: optional:configtree:/bindings/config/

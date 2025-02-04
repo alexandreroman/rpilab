@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rpilab-router
+spec:
+  rules:
+  - host: "*.rpilab.dev"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rpilab-router
+            port:
+              number: 80
