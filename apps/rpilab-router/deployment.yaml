@@ -49,5 +49,7 @@ spec:
         env:
         - name: PORT
           value: "8080"
+        - name: MANAGEMENT_PORT
+          value: "8081"
         - name: SPRING_CONFIG_IMPORT
           value: optional:configtree:/bindings/config/
