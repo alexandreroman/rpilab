@@ -19,7 +19,7 @@ images:
   name: ghcr.io/alexandreroman/html-assistant
 - digest: sha256:8e3819d3ce04cb0eaeb1bbb71e81c382d2e491c4d401e9dde00c94773f40800b
   name: ghcr.io/alexandreroman/rpilab-notifications
-- digest: sha256:fd661e1851e7dd9cac4e82d306b3d1eec5dd82f200751488b52c43e1da238c30
+- digest: sha256:e0198a36c503a50ae008d5b1fd73d9b0c03204847e11bef97cbf0a26e50431f1
   name: ghcr.io/alexandreroman/rpilab-router
 - digest: sha256:c6c61c4d6e74aad0419443e0580d32a415ffe9b2031350c5c068d9d0185ffdc0
   name: ghcr.io/alexandreroman/spring-on-k8s
