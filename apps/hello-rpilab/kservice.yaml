@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/part-of: hello-rpilab
     app.kubernetes.io/name: hello-rpilab
     app.kubernetes.io/instance: hello-rpilab
+    networking.knative.dev/visibility: cluster-local
 spec:
   template:
     metadata:
