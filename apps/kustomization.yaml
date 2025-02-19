@@ -14,7 +14,7 @@ images:
   name: ghcr.io/alexandreroman/blink1-server
 - digest: sha256:4ed1e5b2f4e0658407399179aad2e8fa8faabd1260c84ec076e0894a1bf57fbf
   name: ghcr.io/alexandreroman/bonjour
-- digest: sha256:9090dc6a997172f220f601859113d983c6d867455a4351f56436c7a8b32ad9fb
+- digest: sha256:6145c44cdf25fdaaff0d773971dc26a97d4ac8461ff4e1fd81530c64a5eb6e1b
   name: ghcr.io/alexandreroman/chess-ai
 - digest: sha256:d1f6c2ff9721eff05f0dad95362fb0482d6340ab029e3959aa3b799944e9e1f5
   name: ghcr.io/alexandreroman/hello-rpilab
