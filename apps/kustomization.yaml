@@ -8,11 +8,14 @@ resources:
 - rpilab-router
 - bonjour
 - html-assistant
+- chess-ai
 images:
 - digest: sha256:7bf750fb918a09bfe06f4263824ca74257c263d50df21d236062874a3b17ab37
   name: ghcr.io/alexandreroman/blink1-server
 - digest: sha256:4ed1e5b2f4e0658407399179aad2e8fa8faabd1260c84ec076e0894a1bf57fbf
   name: ghcr.io/alexandreroman/bonjour
+- digest: sha256:2ef18567e840b7ccdb66fa588d3621e1a070111d54a9bb5d7c6fa98c31496af0
+  name: ghcr.io/alexandreroman/chess-ai
 - digest: sha256:d1f6c2ff9721eff05f0dad95362fb0482d6340ab029e3959aa3b799944e9e1f5
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:92f74d0bb0367f98513ac37aafa5e3d1c52ff30e101050a8999606aff7bc5395

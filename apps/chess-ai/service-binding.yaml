@@ -1,0 +1,29 @@
+apiVersion: servicebinding.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: chess-ai-config
+spec:
+  name: config
+  service:
+    apiVersion: v1
+    kind: Secret
+    name: chess-ai-config
+  workload:
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    name: chess-ai
+---
+apiVersion: servicebinding.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: chess-ai-db
+spec:
+  name: db
+  service:
+    apiVersion: v1
+    kind: Secret
+    name: chess-ai-db-redis-svcbind
+  workload:
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    name: chess-ai
