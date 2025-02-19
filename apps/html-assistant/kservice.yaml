@@ -12,7 +12,7 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/minScale: "0"
-        autoscaling.knative.dev/maxScale: "3"
+        autoscaling.knative.dev/maxScale: "1"
         autoscaling.knative.dev/window: "120s"
       labels: *labels
     spec:
