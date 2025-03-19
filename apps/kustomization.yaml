@@ -16,7 +16,7 @@ images:
   name: ghcr.io/alexandreroman/bonjour
 - digest: sha256:03ef9b6f5311f029fbb65e08a416802fe96ae4805322e63c0fe7f194bada5d93
   name: ghcr.io/alexandreroman/chess-ai
-- digest: sha256:d1f6c2ff9721eff05f0dad95362fb0482d6340ab029e3959aa3b799944e9e1f5
+- digest: sha256:5bcf1ad06c1e9d8ebd61e38ab4764bc0e047d22b03b545f2d968378c04e8e069
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:5e88f0a4b9f018fa6603669df5ff3c96f6165d201ecf5577ef3efa72630fb71f
   name: ghcr.io/alexandreroman/html-assistant
