@@ -1,19 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- spring-on-k8s
 - hello-rpilab
 - blink1-server
 - rpilab-notifications
 - rpilab-router
-- bonjour
 - html-assistant
 - chess-ai
 images:
 - digest: sha256:b829c765bc7392054f2159317066d55bdd27232f4d220079ff34da745e0c66ed
   name: ghcr.io/alexandreroman/blink1-server
-- digest: sha256:4ed1e5b2f4e0658407399179aad2e8fa8faabd1260c84ec076e0894a1bf57fbf
-  name: ghcr.io/alexandreroman/bonjour
 - digest: sha256:03ef9b6f5311f029fbb65e08a416802fe96ae4805322e63c0fe7f194bada5d93
   name: ghcr.io/alexandreroman/chess-ai
 - digest: sha256:5bcf1ad06c1e9d8ebd61e38ab4764bc0e047d22b03b545f2d968378c04e8e069
@@ -24,5 +20,3 @@ images:
   name: ghcr.io/alexandreroman/rpilab-notifications
 - digest: sha256:a1ee2804a9e787206993b9fccdd5861e195ea730895230b95d7f4c058f74a30f
   name: ghcr.io/alexandreroman/rpilab-router
-- digest: sha256:c6c61c4d6e74aad0419443e0580d32a415ffe9b2031350c5c068d9d0185ffdc0
-  name: ghcr.io/alexandreroman/spring-on-k8s
