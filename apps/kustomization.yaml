@@ -16,7 +16,7 @@ images:
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:5e88f0a4b9f018fa6603669df5ff3c96f6165d201ecf5577ef3efa72630fb71f
   name: ghcr.io/alexandreroman/html-assistant
-- digest: sha256:8e3819d3ce04cb0eaeb1bbb71e81c382d2e491c4d401e9dde00c94773f40800b
+- digest: sha256:f9b34b2a8ef468065248cbe216f32e611680b8f610c4b45837682eb3571d1f0a
   name: ghcr.io/alexandreroman/rpilab-notifications
 - digest: sha256:a1ee2804a9e787206993b9fccdd5861e195ea730895230b95d7f4c058f74a30f
   name: ghcr.io/alexandreroman/rpilab-router
