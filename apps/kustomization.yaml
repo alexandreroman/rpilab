@@ -10,7 +10,7 @@ resources:
 - html-assistant
 - chess-ai
 images:
-- digest: sha256:7bf750fb918a09bfe06f4263824ca74257c263d50df21d236062874a3b17ab37
+- digest: sha256:b829c765bc7392054f2159317066d55bdd27232f4d220079ff34da745e0c66ed
   name: ghcr.io/alexandreroman/blink1-server
 - digest: sha256:4ed1e5b2f4e0658407399179aad2e8fa8faabd1260c84ec076e0894a1bf57fbf
   name: ghcr.io/alexandreroman/bonjour
