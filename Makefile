@@ -9,6 +9,7 @@ sync:
 	cat apps/hello-rpilab/app-secret.yaml | kubeseal --context ${K8S_CONTEXT} --controller-namespace sealed-secrets --format yaml > apps/hello-rpilab/app-sealed-secret.yaml
 	cat apps/html-assistant/app-secret.yaml | kubeseal --context ${K8S_CONTEXT} --controller-namespace sealed-secrets --format yaml > apps/html-assistant/app-sealed-secret.yaml
 	cat apps/chess-ai/app-secret.yaml | kubeseal --context ${K8S_CONTEXT} --controller-namespace sealed-secrets --format yaml > apps/chess-ai/app-sealed-secret.yaml
+	cat apps/resumebot/app-secret.yaml | kubeseal --context ${K8S_CONTEXT} --controller-namespace sealed-secrets --format yaml > apps/resumebot/app-sealed-secret.yaml
 
 reconcile:
 	flux --context ${K8S_CONTEXT} reconcile source git -n rpilab-system rpilab && \

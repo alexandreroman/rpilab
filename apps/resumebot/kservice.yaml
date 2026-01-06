@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: resumebot
+  labels: &labels
+    app.kubernetes.io/part-of: resumebot
+    app.kubernetes.io/name: resumebot
+    app.kubernetes.io/instance: resumebot
+    networking.knative.dev/visibility: cluster-local
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/window: "120s"
+      labels: *labels
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/resumebot
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128M
+          limits:
+            cpu: 500m
+            memory: 128M
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+        - name: SPRING_CONFIG_IMPORT
+          value: optional:configtree:/bindings/config/
