@@ -21,5 +21,5 @@ images:
   name: ghcr.io/alexandreroman/resumebot
 - digest: sha256:f9b34b2a8ef468065248cbe216f32e611680b8f610c4b45837682eb3571d1f0a
   name: ghcr.io/alexandreroman/rpilab-notifications
-- digest: sha256:5becec720068f3bf16c19d1f98fcbdb9eec6285739bcb784acb4402eb65fbd19
+- digest: sha256:8fae94f75c12c245d006ec1fa98a123db061fa830607e4b46fa28ea08f6fdfab
   name: ghcr.io/alexandreroman/rpilab-router
