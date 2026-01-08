@@ -11,7 +11,7 @@ jobs:
   run-gitops-process:
     runs-on: ubuntu-24.04
     env:
-      IMAGES: "ghcr.io/alexandreroman/hello-rpilab ghcr.io/alexandreroman/blink1-server ghcr.io/alexandreroman/rpilab-notifications ghcr.io/alexandreroman/rpilab-router ghcr.io/alexandreroman/html-assistant ghcr.io/alexandreroman/chess-ai ghcr.io/alexandreroman/resumebot"
+      IMAGES: "ghcr.io/alexandreroman/hello-rpilab ghcr.io/alexandreroman/blink1-server ghcr.io/alexandreroman/rpilab-notifications ghcr.io/alexandreroman/rpilab-router ghcr.io/alexandreroman/html-assistant ghcr.io/alexandreroman/chess-ai ghcr.io/alexandreroman/resumebot ghcr.io/alexandreroman/resumebot-audit"
     steps:
     - uses: imranismail/setup-kustomize@v2
     - uses: carvel-dev/setup-action@v2
