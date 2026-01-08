@@ -7,3 +7,4 @@ resources:
 - app-sealed-secret.yaml
 - kservice.yaml
 - service-binding.yaml
+- audit.yaml

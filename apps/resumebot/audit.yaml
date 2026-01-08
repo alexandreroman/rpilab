@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: resumebot-audit
+spec:
+  schedule: "0 23 * * *"
+  successfulJobsHistoryLimit: 10
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: audit
+            image: ghcr.io/alexandreroman/resumebot-audit
+            env:
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: resumebot-db-redis-svcbind
+                  key: host
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: resumebot-db-redis-svcbind
+                  key: port
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: resumebot-db-redis-svcbind
+                  key: password
+          restartPolicy: OnFailure
