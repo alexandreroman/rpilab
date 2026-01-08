@@ -21,6 +21,9 @@ spec:
     architecture: standalone
     auth:
       existingSecret: chess-ai-db-password
+    commonConfiguration: |-
+      appendonly no
+      save ""
     master:
       persistence:
         enabled: false

@@ -21,6 +21,9 @@ spec:
     architecture: standalone
     auth:
       existingSecret: html-assistant-db-password
+    commonConfiguration: |-
+      appendonly no
+      save ""
     master:
       persistence:
         enabled: false
