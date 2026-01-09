@@ -5,10 +5,15 @@ metadata:
 spec:
   schedule: "0 23 * * *"
   successfulJobsHistoryLimit: 10
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 300
+      backoffLimit: 2
       template:
         spec:
+          restartPolicy: OnFailure
           containers:
           - name: audit
             image: ghcr.io/alexandreroman/resumebot-audit
@@ -28,4 +33,3 @@ spec:
                 secretKeyRef:
                   name: resumebot-db-redis-svcbind
                   key: password
-          restartPolicy: OnFailure
