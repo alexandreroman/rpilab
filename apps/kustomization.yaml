@@ -17,7 +17,7 @@ images:
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:5e88f0a4b9f018fa6603669df5ff3c96f6165d201ecf5577ef3efa72630fb71f
   name: ghcr.io/alexandreroman/html-assistant
-- digest: sha256:a30cb7464d71e25144f92e640f99310159b4ab388efa65815fdaf12683b91763
+- digest: sha256:7f1ecbd8aa384a6a9c26ff31f82f96c8955ec4d5356dd93d151754ce53449ffc
   name: ghcr.io/alexandreroman/resumebot
 - digest: sha256:1b9b412c7243c75c1a9910f3785e781706a63ee1f69f1ecce4e5532f58ca1fa9
   name: ghcr.io/alexandreroman/resumebot-audit
