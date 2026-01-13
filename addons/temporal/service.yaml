@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: temporal
+  labels:
+    app: temporal-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: grpc
+      port: 7233
+      targetPort: 7233
+      protocol: TCP
+  selector:
+    app: temporal-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: temporal-ui
+  labels:
+    app: temporal-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: ui
+      port: 80
+      targetPort: 8233
+      protocol: TCP
+  selector:
+    app: temporal-server

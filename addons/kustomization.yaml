@@ -7,5 +7,6 @@ resources:
 - secretgen-controller
 - knative-serving
 - service-bindings
+- temporal
 - otel
 - promtail

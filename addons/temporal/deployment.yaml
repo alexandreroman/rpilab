@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temporal-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: temporal-server
+  template:
+    metadata:
+      labels:
+        app: temporal-server
+    spec:
+      containers:
+      - name: temporal-server
+        image: temporalio/admin-tools:1.29
+        command: ["temporal"]
+        args: ["server", "start-dev", "--ip", "0.0.0.0"]
+        ports:
+        - containerPort: 7233
+          name: grpc
+        - containerPort: 8233
+          name: ui
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
