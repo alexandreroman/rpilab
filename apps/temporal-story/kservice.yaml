@@ -11,9 +11,9 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/minScale: "1"
         autoscaling.knative.dev/maxScale: "1"
-        autoscaling.knative.dev/window: "300s"
+        autoscaling.knative.dev/window: "120s"
       labels: *labels
     spec:
       containers:
