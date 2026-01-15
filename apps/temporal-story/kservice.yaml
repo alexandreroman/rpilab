@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: temporal-story
+  labels: &labels
+    app.kubernetes.io/part-of: temporal-story
+    app.kubernetes.io/name: temporal-story
+    app.kubernetes.io/instance: temporal-story
+    networking.knative.dev/visibility: cluster-local
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/window: "300s"
+      labels: *labels
+    spec:
+      containers:
+      - image: ghcr.io/alexandreroman/temporal-story
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 1024M
+          limits:
+            cpu: 1000m
+            memory: 1024M
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+        - name: SPRING_CONFIG_IMPORT
+          value: optional:configtree:/bindings/config/
