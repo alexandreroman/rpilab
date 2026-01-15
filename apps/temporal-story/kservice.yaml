@@ -21,10 +21,10 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           requests:
-            cpu: 500m
+            cpu: 100m
             memory: 1024M
           limits:
-            cpu: 1000m
+            cpu: 2000m
             memory: 1024M
         readinessProbe:
           httpGet:
