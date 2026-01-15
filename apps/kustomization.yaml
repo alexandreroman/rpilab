@@ -26,5 +26,5 @@ images:
   name: ghcr.io/alexandreroman/rpilab-notifications
 - digest: sha256:5376d87a0ef82a27dc09a3a850069ce1951412a6372acedbe6bb59cd61464764
   name: ghcr.io/alexandreroman/rpilab-router
-- digest: sha256:62142320f535668564303f1102911181c5d8b3f751afdcdff58a6c261210448f
+- digest: sha256:f9f0cf121ff011aeac2db42873be1e97f3319dae3244176fcd489c2ff0a8aa85
   name: ghcr.io/alexandreroman/temporal-story
