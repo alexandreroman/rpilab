@@ -20,7 +20,7 @@ images:
   name: ghcr.io/alexandreroman/html-assistant
 - digest: sha256:b15d6f4b5321e0e3f2b3fdebe7f95a1cbdbb83c07bf5fde63f124701599f10e0
   name: ghcr.io/alexandreroman/resumebot
-- digest: sha256:1b9b412c7243c75c1a9910f3785e781706a63ee1f69f1ecce4e5532f58ca1fa9
+- digest: sha256:33b97c1e370db735571cbed65a834b69ca48aeec86258c6063dc6098d8f36b85
   name: ghcr.io/alexandreroman/resumebot-audit
 - digest: sha256:f9b34b2a8ef468065248cbe216f32e611680b8f610c4b45837682eb3571d1f0a
   name: ghcr.io/alexandreroman/rpilab-notifications
