@@ -1,0 +1,18 @@
+# yao Configuration File
+
+[chatbot]
+api_key = "env:ANTHROPIC_API_KEY"
+provider = "anthropic"
+model = "haiku"
+temperature = 0.7
+max_tokens = 1000
+summary_interval_messages = 50
+memory_file = "/home/yao/memory/MEMORY.md"
+max_memory_size = 8192
+
+[sandbox]
+timeout_seconds = 30
+
+[telegram]
+bot_token = "env:TELEGRAM_BOT_TOKEN"
+allowed_users = [6350339247]

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yao
+  template:
+    metadata:
+      labels:
+        app: yao
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: app
+        image: ghcr.io/alexandreroman/yao:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        envFrom:
+        - secretRef:
+            name: yao
+        volumeMounts:
+        - name: config
+          mountPath: /home/yao/config.toml
+          subPath: config.toml
+          readOnly: true
+        - name: memory
+          mountPath: /home/yao/memory
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+            memory: 256Mi
+      volumes:
+      - name: config
+        configMap:
+          name: yao
+          defaultMode: 0400
+      - name: memory
+        persistentVolumeClaim:
+          claimName: yao-memory
