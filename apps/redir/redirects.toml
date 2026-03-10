@@ -11,5 +11,25 @@ slug = "bluesky"
 url = "https://bsky.app/profile/alexandreroman.fr"
 
 [[redirects]]
+slug = "x"
+url = "https://x.com/Alexandre_Roman"
+
+[[redirects]]
 slug = "resumebot"
 url = "https://github.com/alexandreroman/resumebot"
+
+[[redirects]]
+slug = "snaike"
+url = "https://github.com/alexandreroman/snaike"
+
+[[redirects]]
+slug = "second-brain-template"
+url = "https://github.com/alexandreroman/second-brain-template"
+
+[[redirects]]
+slug = "chess-ai"
+url = "https://github.com/alexandreroman/chess-ai"
+
+[[redirects]]
+slug = "swulimited"
+url = "https://github.com/swulimited/swulimited.com"
