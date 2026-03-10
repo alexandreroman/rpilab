@@ -11,6 +11,7 @@ resources:
 - temporal-story
 - snaike
 - yao
+- redir
 images:
 - digest: sha256:b829c765bc7392054f2159317066d55bdd27232f4d220079ff34da745e0c66ed
   name: ghcr.io/alexandreroman/blink1-server
