@@ -1,6 +1,6 @@
 [[redirects]]
 slug = "linkedin"
-url = "linkedin.com/in/alexandre-roman"
+url = "https://linkedin.com/in/alexandre-roman"
 
 [[redirects]]
 slug = "github"
@@ -9,3 +9,7 @@ url = "https://github.com/alexandreroman"
 [[redirects]]
 slug = "bluesky"
 url = "https://bsky.app/profile/alexandreroman.fr"
+
+[[redirects]]
+slug = "resumebot"
+url = "https://github.com/alexandreroman/resumebot"
