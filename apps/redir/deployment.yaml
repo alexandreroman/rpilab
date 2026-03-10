@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redir
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redir
+  template:
+    metadata:
+      labels:
+        app: redir
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: app
+        image: ghcr.io/alexandreroman/redir:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        envFrom:
+        - secretRef:
+            name: redir
+        volumeMounts:
+        - name: config
+          mountPath: /config/redirects.toml
+          subPath: /redirects.toml
+          readOnly: true
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 128Mi
+      volumes:
+      - name: config
+        configMap:
+          name: redir
+          defaultMode: 0400
