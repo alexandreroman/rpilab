@@ -39,10 +39,17 @@ spec:
         envFrom:
         - secretRef:
             name: redir
+        env:
+        - name: REDIR_CONFIG
+          value: /config/redirects.toml
+        - name: REDIR_ADDR
+          value: ":8080"
+        - name: REDIS_TLS
+          value: "true"
         volumeMounts:
         - name: config
           mountPath: /config/redirects.toml
-          subPath: /redirects.toml
+          subPath: redirects.toml
           readOnly: true
         resources:
           limits:
