@@ -33,3 +33,7 @@ url = "https://github.com/alexandreroman/chess-ai"
 [[redirects]]
 slug = "swulimited"
 url = "https://github.com/swulimited/swulimited.com"
+
+[[redirects]]
+slug = "redir"
+url = "https://github.com/alexandreroman/redir"
