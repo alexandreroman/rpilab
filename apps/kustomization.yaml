@@ -23,7 +23,7 @@ images:
   name: ghcr.io/alexandreroman/html-assistant
 - digest: sha256:cadfacf49534afbce208139690e7ab8417b1528b6810f809b5a0d901dba48e24
   name: ghcr.io/alexandreroman/redir
-- digest: sha256:4e7dd2d641197424b5fc7f7a6cfc5060795f1ba18504d81c1532247f5e419fd3
+- digest: sha256:ad94ac10dc8b55d3cb5594796cad1100215d9a9641000be3c477e3a624fe2432
   name: ghcr.io/alexandreroman/resumebot
 - digest: sha256:33b97c1e370db735571cbed65a834b69ca48aeec86258c6063dc6098d8f36b85
   name: ghcr.io/alexandreroman/resumebot-audit
