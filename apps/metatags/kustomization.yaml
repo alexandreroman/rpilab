@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: metatags
 resources:
 - namespace.yaml
-- kservice.yaml
+- deployment.yaml
+- service.yaml
 - ingress.yaml

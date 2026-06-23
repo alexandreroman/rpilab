@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metatags
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metatags
+  template:
+    metadata:
+      labels:
+        app: metatags
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/alexandreroman/metatags:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1001
+          seccompProfile:
+            type: RuntimeDefault
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 128Mi
