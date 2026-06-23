@@ -4,3 +4,4 @@ namespace: metatags
 resources:
 - namespace.yaml
 - kservice.yaml
+- ingress.yaml
