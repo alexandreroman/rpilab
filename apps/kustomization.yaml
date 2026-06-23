@@ -22,7 +22,7 @@ images:
   name: ghcr.io/alexandreroman/hello-rpilab
 - digest: sha256:5e88f0a4b9f018fa6603669df5ff3c96f6165d201ecf5577ef3efa72630fb71f
   name: ghcr.io/alexandreroman/html-assistant
-- digest: sha256:a27b4d6c11292dd5c55b9e092b08a5b09baeb11c20b996304f5e01314adb1b16
+- digest: sha256:0226ac91a5202e1acc745d089ddcfae678dd715c9f8a08fd10254c78e9e103d5
   name: ghcr.io/alexandreroman/metatags
 - digest: sha256:cadfacf49534afbce208139690e7ab8417b1528b6810f809b5a0d901dba48e24
   name: ghcr.io/alexandreroman/redir
